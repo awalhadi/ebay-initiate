@@ -8,7 +8,8 @@ use Illuminate\Http\RedirectResponse;
 
 interface AccessTokenServiceInterface
 {
-    // public function getApplicationAccessToken(): ?string;
+    public function getBasicAuthorizationHeader(): ?string;
     public function prepareForGetUserConsentToken(): RedirectResponse|Response|null;
     public function getUserConsentToken(Request $request): ?string; // Adjusted return type
+    public function getAccessToken(): ?string; // Adjusted return type
 }

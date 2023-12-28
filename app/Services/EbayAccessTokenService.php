@@ -157,7 +157,7 @@ class EbayAccessTokenService implements AccessTokenServiceInterface
   }
 
 
-  public function getBasicAuthorizationHeader()
+  public function getBasicAuthorizationHeader(): ?string
   {
     try {
       return 'Basic ' . base64_encode($this->clientId . ":" . $this->clientSecret);

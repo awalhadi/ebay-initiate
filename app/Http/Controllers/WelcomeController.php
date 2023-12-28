@@ -20,9 +20,11 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        // return $this->accessTokenService->prepareForGetUserConsentToken();
-        $products = $this->ebayService->getProductList();
-        dd($products);
+        // $authHeader = $this->accessTokenService->getBasicAuthorizationHeader();
+        // $products = $this->ebayService->getProductList();
+        // dd($products);
+        // $access_token =  $this->accessTokenService->getAccessToken();
+        // dd($authHeader);
         return view('welcome');
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,12 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/accept', [WelcomeController::class, 'handleConsentToken']);
 Route::get('/decline', function (Request $request) {
   dd($request->all());
-    return view('welcome');
+  return view('welcome');
 });
+
+
+// category
+Route::get('/get-default-category-id', [CategoryController::class, 'getDefaultCategory']);
+Route::get('/get-category-tree-by-id', [CategoryController::class, 'getCategoryTreeById']);
 
 
