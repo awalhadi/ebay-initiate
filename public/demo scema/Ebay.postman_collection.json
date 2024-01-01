@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "1c8bca10-e5e5-43cc-8a7e-31f61fc44bc4",
+		"name": "Ebay",
+		"description": "App api testing from api explorer\n\n[https://developer.ebay.com/my/api_test_tool?index=0&amp;api=inventory&amp;call=location-merchantLocationKey__POST&amp;variation=json](https://developer.ebay.com/my/api_test_tool?index=0&api=inventory&call=location-merchantLocationKey__POST&variation=json)\n\n  \ndeveloper guide  \n[https://developer.ebay.com/develop/guides](https://developer.ebay.com/develop/guides)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27184821"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get Default Category Tree Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "marketplace_id",
+									"value": "EBAY_US",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/commerce/taxonomy/v1/get_default_category_tree_id?marketplace_id=EBAY_US",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"commerce",
+								"taxonomy",
+								"v1",
+								"get_default_category_tree_id"
+							],
+							"query": [
+								{
+									"key": "marketplace_id",
+									"value": "EBAY_US"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category Tree",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/commerce/taxonomy/v1/category_tree/0",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"commerce",
+								"taxonomy",
+								"v1",
+								"category_tree",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Automotive Parts Compatibility Policies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/metadata/v1/marketplace/EBAY_US/get_item_condition_policies",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"metadata",
+								"v1",
+								"marketplace",
+								"EBAY_US",
+								"get_item_condition_policies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Permission for consent token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sanbox_auth_url}}/oauth2/authorize?client_id={{client_id}}&response_type=code&redirect_uri={{redirect_uri}}&scope={{scopes}}&prompt=login",
+							"host": [
+								"{{sanbox_auth_url}}"
+							],
+							"path": [
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}"
+								},
+								{
+									"key": "scope",
+									"value": "{{scopes}}"
+								},
+								{
+									"key": "prompt",
+									"value": "login"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example response success url with consent token",
+							"originalRequest": {
+								"method": "GET",
+								"header": []
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\":\"success\",\r\n    \"code\": \"v^1.1#i^1#f^0#r^1#I^3#p^3#t^Ul41XzI6RkY0NjNDNUUyMUQ5Mzk0ODZDQUU0MDk1MEQ1QTcwMkFfMF8xI0VeMTI4NA==\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Access Token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic QUF3YWxIYWQtRnVsbFN0cm8tU0JYLWRmNDkyYTdiMi02N2Q5OWNlMjpTQlgtZjQ4OTg1YWVmNzNlLTQxOWMtNDZjOC05ODY5LTcyOTY=",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Basic",
+								"value": "Basic QUF3YWxIYWQtRnVsbFN0cm8tU0JYLWRmNDkyYTdiMi02N2Q5OWNlMjpTQlgtZjQ4OTg1YWVmNzNlLTQxOWMtNDZjOC05ODY5LTcyOTY=",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "v^1.1#i^1#f^0#r^1#I^3#p^3#t^Ul41XzI6RkY0NjNDNUUyMUQ5Mzk0ODZDQUU0MDk1MEQ1QTcwMkFfMF8xI0VeMTI4NA==",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "fullstro_Invent-AAwalHad-FullSt-bhqckh",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/identity/v1/oauth2/token",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"identity",
+								"v1",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Refresh Token",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic QUF3YWxIYWQtRnVsbFN0cm8tU0JYLWRmNDkyYTdiMi02N2Q5OWNlMjpTQlgtZjQ4OTg1YWVmNzNlLTQxOWMtNDZjOC05ODY5LTcyOTY=",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "v^1.1#i^1#r^1#I^3#p^3#f^0#t^Ul4xMF84OkE2M0JDRUVBMTIxQUJGRDM4MDQxN0IzNTRENkU0NkM5XzNfMSNFXjEyODQ=",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/identity/v1/oauth2/token",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"identity",
+								"v1",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Policy",
+			"item": [
+				{
+					"name": "Get fulfillment policy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/account/v1/fulfillment_policy?marketplace_id=EBAY_US",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"account",
+								"v1",
+								"fulfillment_policy"
+							],
+							"query": [
+								{
+									"key": "marketplace_id",
+									"value": "EBAY_US"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Api are in under sell account"
+		},
+		{
+			"name": "Offer",
+			"item": [
+				{
+					"name": "Get offers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/offer?sku={SKU}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"offer"
+							],
+							"query": [
+								{
+									"key": "sku",
+									"value": "{SKU}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Offer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/offer/{offerId}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"offer",
+								"{offerId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Offer",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "en-US",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sku\": \"fullstro1\",\r\n    \"marketplaceId\": \"EBAY_US\",\r\n    \"format\": \"FIXED_PRICE\",\r\n    \"listingDescription\": \"<ul><li><font face=\\\"Arial\\\"><span style=\\\"font-size: 18.6667px;\\\"><p class=\\\"p1\\\">Test listing - do not bid or buy&nbsp;<\\/p><\\/span><\\/font><\\/li><li><p class=\\\"p1\\\">Built-in GPS.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">Water resistance to 50 meters.<\\/p><\\/li><li><p class=\\\"p1\\\">&nbsp;A new lightning-fast dual-core processor.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">And a display that\\u2019s two times brighter than before.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">Full of features that help you stay active, motivated, and connected, Apple Watch Series 2 is designed for all the ways you move<\\/p><\\/li><\\/ul>\",\r\n    \"availableQuantity\": 20,\r\n    \"quantityLimitPerBuyer\": 5,\r\n    \"pricingSummary\": {\r\n        \"price\": {\r\n            \"value\": 10,\r\n            \"currency\": \"USD\"\r\n        }\r\n    },\r\n    \"listingPolicies\": {\r\n        \"fulfillmentPolicyId\": \"78842674011\",\r\n        \"paymentPolicyId\": \"61019561011\",\r\n        \"returnPolicyId\": \"61019560011\"\r\n    },\r\n    \"categoryId\": \"178086\",\r\n    \"merchantLocationKey\": \"Store1\",\r\n    \"tax\": {\r\n        \"vatPercentage\": 10.2,\r\n        \"applyTax\": true,\r\n        \"thirdPartyTaxCategory\": \"Electronics\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/offer",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"offer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update offer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "en-US",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sku\": \"fullstro1\",\r\n    \"marketplaceId\": \"EBAY_US\",\r\n    \"format\": \"FIXED_PRICE\",\r\n    \"listingDescription\": \"<ul><li><font face=\\\"Arial\\\"><span style=\\\"font-size: 18.6667px;\\\"><p class=\\\"p1\\\">Test listing - do not bid or buy&nbsp;<\\/p><\\/span><\\/font><\\/li><li><p class=\\\"p1\\\">Built-in GPS.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">Water resistance to 50 meters.<\\/p><\\/li><li><p class=\\\"p1\\\">&nbsp;A new lightning-fast dual-core processor.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">And a display that\\u2019s two times brighter than before.&nbsp;<\\/p><\\/li><li><p class=\\\"p1\\\">Full of features that help you stay active, motivated, and connected, Apple Watch Series 2 is designed for all the ways you move<\\/p><\\/li><\\/ul>\",\r\n    \"availableQuantity\": 30,\r\n    \"quantityLimitPerBuyer\": 5,\r\n    \"pricingSummary\": {\r\n        \"price\": {\r\n            \"value\": 15,\r\n            \"currency\": \"USD\"\r\n        }\r\n    },\r\n    \"listingPolicies\": {\r\n        \"fulfillmentPolicyId\": \"78842674011\",\r\n        \"paymentPolicyId\": \"61019561011\",\r\n        \"returnPolicyId\": \"61019560011\"\r\n    },\r\n    \"categoryId\": \"178086\",\r\n    \"merchantLocationKey\": \"Store1\",\r\n    \"tax\": {\r\n        \"vatPercentage\": 10.2,\r\n        \"applyTax\": true,\r\n        \"thirdPartyTaxCategory\": \"Electronics\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/offer/{offerId}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"offer",
+								"{offerId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Publish Offer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/offer/{offerId}/publish",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"offer",
+								"{offerId}",
+								"publish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Get Inventory Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/inventory_item?limit=2&offset=0",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"inventory_item"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Or Replace Inventory Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "en-US",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product\": {\r\n        \"title\": \"Test listing - do not bid or buy - awesome Apple watch test 2\",\r\n        \"aspects\": {\r\n            \"Feature\":[\r\n              \"Water resistance\", \"GPS\"\r\n            ],\r\n            \"CPU\":[\r\n              \"Dual-Core Processor\"\r\n            ]\r\n        },\r\n        \"description\": \"Test listing - do not bid or buy \\n Built-in GPS. Water resistance to 50 meters.1 A new lightning-fast dual-core processor. And a display that\\u2019s two times brighter than before. Full of features that help you stay active, motivated, and connected, Apple Watch Series 2 is designed for all the ways you move \",\r\n        \"upc\": [\"888462079525\"],\r\n        \"imageUrls\": [\r\n            \"http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/S/1/S1/42/S1-42-alu-silver-sport-white-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247758975\",\r\n            \"http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/4/2/42/stainless/42-stainless-sport-white-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247760390\",\r\n            \"http://store.storeimages.cdn-apple.com/4973/as-images.apple.com/is/image/AppleInc/aos/published/images/4/2/42/ceramic/42-ceramic-sport-cloud-grid?wid=332&hei=392&fmt=jpeg&qlt=95&op_sharpen=0&resMode=bicub&op_usm=0.5,0.5,0,0&iccEmbed=0&layer=comp&.v=1472247758007\"\r\n        ]\r\n    },\r\n    \"condition\": \"NEW\",\r\n    \"packageWeightAndSize\": {\r\n        \"dimensions\": {\r\n            \"height\": 5,\r\n            \"length\": 10,\r\n            \"width\": 15,\r\n            \"unit\": \"INCH\"\r\n        },\r\n        \"packageType\": \"MAILING_BOX\",\r\n        \"weight\": {\r\n            \"value\": 2,\r\n            \"unit\": \"POUND\"\r\n        }\r\n    },\r\n    \"availability\": {\r\n        \"shipToLocationAvailability\": {\r\n            \"quantity\": 10\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/inventory_item/{SKU}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"inventory_item",
+								"{SKU}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Inventory Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/inventory_item/{SKU}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"inventory_item",
+								"{SKU}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Warehouse",
+			"item": [
+				{
+					"name": "Create Inventory Location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": {\r\n        \"address\": {\r\n            \"addressLine1\": \"2055 Hamilton Ave\",\r\n            \"addressLine2\": \"Building 3\",\r\n            \"city\": \"San Jose\",\r\n            \"stateOrProvince\": \"CA\",\r\n            \"postalCode\": \"95125\",\r\n            \"country\": \"US\"\r\n        }\r\n    },\r\n    \"locationInstructions\": \"Open for drop-off only.\",\r\n    \"name\": \"Warehouse-1\",\r\n    \"phone\": \"123-456-7890\",\r\n    \"merchantLocationStatus\": \"ENABLED\",\r\n    \"locationTypes\": [\r\n        \"WAREHOUSE\"\r\n    ],\r\n    \"operatingHours\": [\r\n        {\r\n            \"dayOfWeek\": \"MONDAY\",\r\n            \"intervals\": [\r\n                {\r\n                    \"open\": \"09:00:00\",\r\n                    \"close\": \"12:00:00\"\r\n                },\r\n                {\r\n                    \"open\": \"13:00:00\",\r\n                    \"close\": \"18:00:00\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"dayOfWeek\": \"TUESDAY\",\r\n            \"intervals\": [\r\n                {\r\n                    \"open\": \"09:00:00\",\r\n                    \"close\": \"15:00:00\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"specialHours\": [\r\n        {\r\n            \"date\": \"2016-10-19T00:09:00.000Z\",\r\n            \"intervals\": [\r\n                {\r\n                    \"open\": \"09:00:00\",\r\n                    \"close\": \"11:00:00\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sandbox_api_url}}/sell/inventory/v1/location/{merchantLocationKey}",
+							"host": [
+								"{{sandbox_api_url}}"
+							],
+							"path": [
+								"sell",
+								"inventory",
+								"v1",
+								"location",
+								"{merchantLocationKey}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic v^1.1#i^1#I^3#p^1#r^0#f^0#t^H4sIAAAAAAAAAOVYa2wURRzv9YXlIQQIIJB4XQqJwu7t7j134S5eKYVG2h7cUWgTJHO7s+3Svd1jZ5a7Q4yXEkEJxkdCYoKSilFSiRoDxRCVBj+InyQajS+I8QESjAohhoIIzu2Vcq0ECr3EJu6Xzcz8n7/5P2aGzVZWPbx9xfZLkxzjSruzbLbU4eAmsFWVFQvvLyudXVHCFhA4urM12fKusrNLEEhoSXE1RElDR9CZTmg6Eu3JIGWZumgApCJRBwmIRCyJ0XDjSpFnWDFpGtiQDI1yNtQFKai4Ie8WZEmArOKRJDKr35AZM8g6qwQk6IZewPpZycuRdYQs2KAjDHQcpHiWd9McR/NCjPWJbk5kBSbgc7dRzhZoItXQCQnDUiHbXNHmNQtsvb2pACFoYiKECjWE66PN4Ya6ZU2xJa4CWaEBHKIYYAsNHS01ZOhsAZoFb68G2dRi1JIkiBDlCuU1DBUqhm8Ycw/m21BzLOfngdfjFTyC5BaKA2W9YSYAvr0duRlVphWbVIQ6VnHmTogSNOIboYQHRk1EREOdM/dbZQFNVVRoBqllteHWcCRChcLhFNBWAJmutzQtik2Djtauo2XFI/DAH+dpn18WBAnyA4ry0gZgHqZpqaHLag405GwycC0kVsPh2PAF2BCiZr3ZDCs4Z1EhXeAGht5AW25T87to4Q49t68wQYBw2sM778AgN8amGrcwHJQwfMGGKEiBZFKVqeGLdiwOhE8aBakOjJOiy5VKpZiUmzHMdhfPspxrXePKqNQBE4AitLlcz9Ord2agVdsVCRJOpIo4kyS2pEmsEgP0dirk4Xje7x3AfahZoeGz/5oo8Nk1NCOKlSF+rwLisix5YNwT4GShGBkSGghSV84OGAcZOgHMToiTGpAgLZE4sxLQVGXR7VV4d0CBtOwTFNojKAod98o+mlMgZCGMxyUh8H9KlJGGehRKJsRFifWixbmZ3rimMRWob1SN1uWbWn2bH0WNMRiJbdZb67h059q2hM5nANe2dgsKjjQbbun8Uk0lyMSI/mIAkMv14oGwwkAYyqNyLyoZSRgxNFXKjK0NdptyBJg4U2tlyDgKNY38RuVqOJlsKE7FLpqTd1ks7s3v4nWq/6hL3dIrlAvcseVVjh8RASCpMqQP5XI9w0hGwmUAcgjJTW+wrXYOI7wlkStuZZh2CyJMLJHJOXDETCop5gxpafLIWfINkzgxchZyyZAtCd+TIrszMwRNtb0Do7vSmR4NKHFL6xw5iwyBNqoQVclVY0wFKPE077Iq5+8IjO03gzZLjAmRYZnkesQ0547MMaMT6uQAQmqSpkGzhRt16U0kLAziGhxrNbgItUglue7oH2MnJM7PcuTe7/EJo/JNss8/G8ZaByl257yLm5Br6LtMqMT+uC7Hh2yX40ipw8H6WZpbyD5UWbamvGwihUjtYRDQ5biRZlSgMKTs6QBbJmQ6YSYJVLO00qF++4XUX/Ai1L2enTX4JlRVxk0oeCBi595cqeAmz5zEuzmOF1ifm2OFNnbezdVybkb59Ouho7t6/nh+/7FxL52v27pnav/pQxw7aZDI4agoIeFbEspEvlsQ4A6n5qPLfGZdx4nxTyw+sOvtTxpmZS/GPv35meruumyqRz9ZcbirZ/YZc84MeHTn93TTweoTuz9efvaVIz+G+6qvhd58ctXO9++7UlV6Mjxvrqu/57kLU74KgFNS1+orvzzo+uzlaa86D34t9O998a21prpg+rlFpZGpy+ovbe3t2zN/W7Ti9VX7nm5dk5iZPL+jb/3nF+cvfmrr5OsvtJ6+wqx+79Thmo5t0pbm3gcWXWc54fiz34xfgJo++KjmB8cbYPde9+O9fx3/LStUH5rWIofaDgTf/VKuiWR+n2henbPp18tn9mvPzug79+dr71A7Fmen/bTvEc+1C1Myj12tih/rpcsu/J3fxn8Anz3dEKsTAAA=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://api.sandbox.ebay.com/identity/v1/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"sandbox",
+						"ebay",
+						"com"
+					],
+					"path": [
+						"identity",
+						"v1",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "v^1.1#i^1#f^0#I^3#r^0#p^3#t^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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-EBAY-C-MARKETPLACE-ID",
+						"value": "EBAY_US",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://apiz.ebay.com/commerce/identity/v1/user/",
+					"protocol": "https",
+					"host": [
+						"apiz",
+						"ebay",
+						"com"
+					],
+					"path": [
+						"commerce",
+						"identity",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "v^1.1#i^1#f^0#r^0#I^3#p^3#t^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",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "production_auth_url",
+			"value": "https://auth.ebay.com",
+			"type": "string"
+		},
+		{
+			"key": "sanbox_auth_url",
+			"value": "https://auth.sandbox.ebay.com",
+			"type": "string"
+		},
+		{
+			"key": "sandbox_api_url",
+			"value": "https://api.sandbox.ebay.com",
+			"type": "string"
+		},
+		{
+			"key": "production_api_url",
+			"value": "https://api.ebay.com",
+			"type": "string"
+		},
+		{
+			"key": "client_id",
+			"value": "AAwalHad-FullStro-SBX-df492a7b2-67d99ce2",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "SBX-f48985aef73e-419c-46c8-9869-7296",
+			"type": "string"
+		},
+		{
+			"key": "redirect_uri",
+			"value": "fullstro_Invent-AAwalHad-FullSt-bhqckh",
+			"type": "string"
+		},
+		{
+			"key": "scopes",
+			"value": "https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fbuy.order.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fbuy.guest.order%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.marketing.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.marketing%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.inventory.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.inventory%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.account.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.account%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.fulfillment.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.fulfillment%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.analytics.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.marketplace.insights.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.catalog.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fbuy.shopping.cart%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fbuy.offer.auction%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.email.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.phone.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.address.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.name.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.identity.status.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.finances%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.payment.dispute%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.item.draft%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.item%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.reputation%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.reputation.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.notification.subscription%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fcommerce.notification.subscription.readonly%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.stores%20https%3A%2F%2Fapi.ebay.com%2Foauth%2Fapi_scope%2Fsell.stores.readonly",
+			"type": "string"
+		},
+		{
+			"key": "consent_token",
+			"value": "v^1.1#i^1#f^0#r^1#I^3#p^3#t^Ul41XzI6RkY0NjNDNUUyMUQ5Mzk0ODZDQUU0MDk1MEQ1QTcwMkFfMF8xI0VeMTI4NA==",
+			"type": "string"
+		}
+	]
+}
